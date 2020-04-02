@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "projects": {
+    "trader-platform": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/trader-platform",
+      "sourceRoot": "apps/trader-platform/src",
+      "prefix": "trader-desktop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/trader-platform",
+            "index": "apps/trader-platform/src/index.html",
+            "main": "apps/trader-platform/src/main.ts",
+            "polyfills": "apps/trader-platform/src/polyfills.ts",
+            "tsConfig": "apps/trader-platform/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/trader-platform/src/favicon.ico",
+              "apps/trader-platform/src/assets"
+            ],
+            "styles": ["apps/trader-platform/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/trader-platform/src/environments/environment.ts",
+                  "with": "apps/trader-platform/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "trader-platform:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "trader-platform:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "trader-platform:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/trader-platform/tsconfig.app.json",
+              "apps/trader-platform/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/trader-platform/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/trader-platform/jest.config.js",
+            "tsConfig": "apps/trader-platform/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/trader-platform/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "trader-platform-e2e": {
+      "root": "apps/trader-platform-e2e",
+      "sourceRoot": "apps/trader-platform-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/trader-platform-e2e/cypress.json",
+            "tsConfig": "apps/trader-platform-e2e/tsconfig.e2e.json",
+            "devServerTarget": "trader-platform:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "trader-platform:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/trader-platform-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/trader-platform-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "trader-platform"
+}
