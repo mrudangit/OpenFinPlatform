@@ -39,7 +39,7 @@
     "@angular/platform-browser-dynamic": "9.1.0",
     "@angular/router": "9.1.0",
     "@fullcalendar/core": "^4.4.0",
-    "@nrwl/angular": "9.2.1",
+    "@nrwl/angular": "9.2.2",
     "@types/openfin": "^49.0.0",
     "chart.js": "^2.9.3",
     "chartjs": "^0.3.24",
@@ -47,12 +47,12 @@
     "primeicons": "^2.0.0",
     "primeng": "^9.0.5",
     "quill": "^1.3.7",
-    "rxjs": "~6.5.4",
+    "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular/cli": "9.1.0",
-    "@nrwl/workspace": "9.2.1",
+    "@nrwl/workspace": "9.2.2",
     "@types/node": "~8.9.4",
     "dotenv": "6.2.0",
     "ts-node": "~7.0.0",
@@ -65,11 +65,11 @@
     "@angular-devkit/build-angular": "0.901.0",
     "codelyzer": "~5.0.1",
     "jest-preset-angular": "8.1.2",
-    "@nrwl/jest": "9.2.1",
+    "@nrwl/jest": "9.2.2",
     "jest": "25.2.3",
     "@types/jest": "25.1.4",
     "ts-jest": "25.2.1",
     "cypress": "^4.1.0",
-    "@nrwl/cypress": "9.2.1"
+    "@nrwl/cypress": "9.2.2"
   }
 }
