@@ -11,7 +11,9 @@ export class AppComponent implements OnInit{
   items: MenuItem[];
 
   constructor() {
-    fin.Platform.init();
+    if(typeof fin !== 'undefined') {
+      fin.Platform.init();
+    }
   }
 
   ngOnInit(): void {

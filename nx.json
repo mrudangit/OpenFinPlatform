@@ -25,6 +25,13 @@
     "trader-platform-e2e": {
       "tags": [],
       "implicitDependencies": ["trader-platform"]
+    },
+    "main-window": {
+      "tags": []
+    },
+    "main-window-e2e": {
+      "tags": [],
+      "implicitDependencies": ["main-window"]
     }
   }
 }

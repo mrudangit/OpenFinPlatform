@@ -25,9 +25,7 @@
               "apps/trader-platform/src/favicon.ico",
               "apps/trader-platform/src/assets"
             ],
-            "styles": [
-                           "apps/trader-platform/src/styles.scss"
-            ],
+            "styles": ["apps/trader-platform/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -122,6 +120,129 @@
           "options": {
             "tsConfig": ["apps/trader-platform-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/trader-platform-e2e/**"]
+          }
+        }
+      }
+    },
+    "main-window": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/main-window",
+      "sourceRoot": "apps/main-window/src",
+      "prefix": "trader-desktop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/main-window",
+            "index": "apps/main-window/src/index.html",
+            "main": "apps/main-window/src/main.ts",
+            "polyfills": "apps/main-window/src/polyfills.ts",
+            "tsConfig": "apps/main-window/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/main-window/src/favicon.ico",
+              "apps/main-window/src/assets"
+            ],
+            "styles": ["apps/main-window/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/main-window/src/environments/environment.ts",
+                  "with": "apps/main-window/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "main-window:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "main-window:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "main-window:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/main-window/tsconfig.app.json",
+              "apps/main-window/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/main-window/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/main-window/jest.config.js",
+            "tsConfig": "apps/main-window/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/main-window/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "main-window-e2e": {
+      "root": "apps/main-window-e2e",
+      "sourceRoot": "apps/main-window-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/main-window-e2e/cypress.json",
+            "tsConfig": "apps/main-window-e2e/tsconfig.e2e.json",
+            "devServerTarget": "main-window:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "main-window:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/main-window-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/main-window-e2e/**"]
           }
         }
       }
