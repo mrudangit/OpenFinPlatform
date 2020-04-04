@@ -25,7 +25,9 @@
               "apps/trader-platform/src/favicon.ico",
               "apps/trader-platform/src/assets"
             ],
-            "styles": ["apps/trader-platform/src/styles.scss"],
+            "styles": [
+                           "apps/trader-platform/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
