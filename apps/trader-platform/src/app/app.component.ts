@@ -10,9 +10,36 @@ export class AppComponent implements OnInit{
   title = 'Trader Platform';
   items: MenuItem[];
 
+  async saveSnapshotToServer() {
+    console.log('Send SnapShot To Server');
+    // async code here.
+    // Send a snapshot to the server, store it locally somewhere, etc.
+  }
+
+  overrideCallback(Provider: any)  {
+    // Extend default behavior
+    console.log(Provider.toString());
+    class MyOverride extends Provider {
+
+      async getSnapshot() {
+        // Call super to access vanilla platform behavior
+        const snapshot = await super.getSnapshot();
+        // Perform any additional logic needed
+        await this.saveSnapshotToServer();
+        return { ...snapshot, answer: 42 };
+      }
+    }
+    // Return instance with methods to be consumed by Platform
+    return new MyOverride();
+  }
+
+
+
   constructor() {
     if(typeof fin !== 'undefined') {
-      fin.Platform.init();
+
+      fin.Platform.init({ overrideCallback :this.overrideCallback });
+      //fin.Platform.init();
     }
   }
 
@@ -137,5 +164,38 @@ export class AppComponent implements OnInit{
      app.quit().then((done) => {
        console.log('Closing Platform');
      })
+  }
+
+
+  async createNewPlatformWindow($event: MouseEvent) {
+
+    const platform = fin.Platform.getCurrentSync();
+
+    const window = platform.createWindow({
+      layout: {
+        content: [
+          {
+            type: 'stack',
+            content: [
+              {
+                type: 'component',
+                componentName: 'view',
+                componentState: {
+                  name: 'test_view_1',
+                  url: 'https://cdn.openfin.co/docs/javascript/canary/Platform.html'
+                }
+              }
+            ]
+          }
+        ]
+      }
+    });
+
+    window.then((id) => {
+      console.log('Identity : ', id);
+    }).catch((e)=> {
+      console.log('Error : ', e);
+    });
+
   }
 }

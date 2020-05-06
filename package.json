@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@angular/cli": "9.1.1",
+    "@types/openfin": "^49.0.0",
     "@nrwl/workspace": "9.2.2",
     "@types/node": "~8.9.4",
     "dotenv": "6.2.0",

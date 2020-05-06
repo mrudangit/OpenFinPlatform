@@ -30,5 +30,30 @@
         "keys": "Ctrl+Tab"
       }
     ]
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "layout": {
+          "content": [
+            {
+              "type": "stack",
+              "id": "no-drop-target",
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "component_A1",
+                    "processAffinity": "ps_1",
+                    "url": "http://localhost:4400/index.html"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }
