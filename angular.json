@@ -246,6 +246,244 @@
           }
         }
       }
+    },
+    "platform-provider": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/platform-provider",
+      "sourceRoot": "apps/platform-provider/src",
+      "prefix": "trader-desktop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/platform-provider",
+            "index": "apps/platform-provider/src/index.html",
+            "main": "apps/platform-provider/src/main.ts",
+            "polyfills": "apps/platform-provider/src/polyfills.ts",
+            "tsConfig": "apps/platform-provider/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/platform-provider/src/favicon.ico",
+              "apps/platform-provider/src/assets"
+            ],
+            "styles": ["apps/platform-provider/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/platform-provider/src/environments/environment.ts",
+                  "with": "apps/platform-provider/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "platform-provider:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "platform-provider:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "platform-provider:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/platform-provider/tsconfig.app.json",
+              "apps/platform-provider/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/platform-provider/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/platform-provider/jest.config.js",
+            "tsConfig": "apps/platform-provider/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/platform-provider/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "platform-provider-e2e": {
+      "root": "apps/platform-provider-e2e",
+      "sourceRoot": "apps/platform-provider-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/platform-provider-e2e/cypress.json",
+            "tsConfig": "apps/platform-provider-e2e/tsconfig.e2e.json",
+            "devServerTarget": "platform-provider:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "platform-provider:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/platform-provider-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/platform-provider-e2e/**"]
+          }
+        }
+      }
+    },
+    "child-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/child-app",
+      "sourceRoot": "apps/child-app/src",
+      "prefix": "trader-desktop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/child-app",
+            "index": "apps/child-app/src/index.html",
+            "main": "apps/child-app/src/main.ts",
+            "polyfills": "apps/child-app/src/polyfills.ts",
+            "tsConfig": "apps/child-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/child-app/src/favicon.ico",
+              "apps/child-app/src/assets"
+            ],
+            "styles": ["apps/child-app/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/child-app/src/environments/environment.ts",
+                  "with": "apps/child-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "child-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "child-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "child-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/child-app/tsconfig.app.json",
+              "apps/child-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/child-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/child-app/jest.config.js",
+            "tsConfig": "apps/child-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/child-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "child-app-e2e": {
+      "root": "apps/child-app-e2e",
+      "sourceRoot": "apps/child-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/child-app-e2e/cypress.json",
+            "tsConfig": "apps/child-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "child-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "child-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/child-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/child-app-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

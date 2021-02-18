@@ -1,11 +1,19 @@
 <div style="display: flex; align-items: center">
   <i style="color: white; -webkit-app-region: drag" class="pi pi-apple"></i>
 
+  <span style="color: white"> Version : {{version}}</span>
   <div style="flex-grow: 1;">
   <p-toolbar>
+
+    <div class="ui-toolbar-group-right">
+      <button (click)="displayInfo($event)" class="ui-button-danger" pButton type="button" label="Info" icon="pi pi-times"></button>
+    </div>
+
   <div class="ui-toolbar-group-left">
     <button (click)="createNewPlatformWindow($event)" pButton type="button" label="New" icon="pi pi-plus"></button>
   </div>
+
+
 
     <div class="ui-toolbar-group-right">
       <button (click)="closePlatform($event)" class="ui-button-danger" pButton type="button" label="Close" icon="pi pi-times"></button>

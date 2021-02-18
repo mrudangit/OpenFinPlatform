@@ -32,6 +32,20 @@
     "main-window-e2e": {
       "tags": [],
       "implicitDependencies": ["main-window"]
+    },
+    "platform-provider": {
+      "tags": []
+    },
+    "platform-provider-e2e": {
+      "tags": [],
+      "implicitDependencies": ["platform-provider"]
+    },
+    "child-app": {
+      "tags": []
+    },
+    "child-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["child-app"]
     }
   }
 }

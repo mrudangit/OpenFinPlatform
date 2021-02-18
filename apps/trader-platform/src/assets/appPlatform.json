@@ -1,9 +1,13 @@
 {
+  "customData": 100.1,
   "runtime": {
     "arguments": "--v=1 --inspect",
     "version": "15.80.49.30"
   },
   "platform": {
+    "context": {
+      "version": 1000
+    },
     "uuid": "TraderDesktopPlatform",
     "frame": false,
     "defaultWidth": 800,
@@ -11,9 +15,8 @@
     "defaultLeft": 100,
     "defaultTop": 100,
     "saveWindowState": false,
-    "applicationIcon": "http://localhost:4200/assets/dollar-sign-solid.svg",
     "autoShow": true,
-    "providerUrl": "http://localhost:4200/index.html",
+    "providerUrl": "http://localhost:4500/index.html",
     "defaultWindowOptions": {
       "url": "http://localhost:4200/index.html",
       "contextMenu": true,
@@ -21,6 +24,7 @@
       "defaultHeight": 600,
       "defaultLeft": 0,
       "defaultTop": 0,
+      "customData": 100.1,
       "saveWindowState": false,
       "backgroundThrottling": false
     },
@@ -46,16 +50,16 @@
                   "componentState": {
                     "name": "component_A1",
                     "processAffinity": "ps_1",
-                    "url": "http://localhost:4400/index.html"
+                    "url": "http://localhost:4400/app1"
                   }
                 },
                 {
                   "type": "component",
                   "componentName": "view",
                   "componentState": {
-                    "name": "component_A1",
-                    "processAffinity": "ps_1",
-                    "url": "http://localhost:4400/index.html"
+                    "name": "component_A2",
+                    "processAffinity": "ps_2",
+                    "url": "http://localhost:4400/app2"
                   }
                 }
               ]
